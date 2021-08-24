@@ -70,15 +70,15 @@ class gui:
                     if board[i][j]==4:
                         window.blit(link, (j*60,i*60))
             pygame.display.update()
-            Link=A_start_algorithm(board,4)
-            if Link[0]==0:
-                break
-            board=updateBoard(board,4,Link[2])
             Enemy1=A_start_algorithm(board,2)
             if Enemy1[0]==0:
                 break
             board=updateBoard(board,2,Enemy1[2])
             board=updateBoard(board,-2,randomWay(board,-2))
+            Link=A_start_algorithm(board,4)
+            if Link[0]==0:
+                break
+            board=updateBoard(board,4,Link[2])
             fuente = pygame.font.Font(None, 30)
             text = "Turn: {}, Total nodes Link: {}, Total nodes Enemy1: {}".format(count, Link[1], Enemy1[1])
             mensaje = fuente.render(text, 1, (255, 255, 255))
