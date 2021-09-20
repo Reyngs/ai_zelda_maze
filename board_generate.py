@@ -1,10 +1,12 @@
 import os
-from board import generateRandomBoard
+from board import generateRandomBoard, readBoard
+from ai import A_star_algorithm
 
 dir_name=input("Ingresa el nombre de la carpeta donde se almacenaran los tableros: ")
 
 try:
     os.mkdir(dir_name)
+    os.mkdir(dir_name+"_answers")
 except OSError:
     print("Fallo la creacion del directorio %s" % dir_name)
 
@@ -17,7 +19,9 @@ if s==3:
     w=int(input(" w:"))+2
     h=int(input(" h:"))+2
 
-for i in range(n):
+i=-1
+while i+1 < n:
+    i+=1
     board=generateRandomBoard(s,w,h)
     file_name=str(i)+".csv"
     f=open(dir_name + "/" + file_name, 'w')
@@ -31,4 +35,13 @@ for i in range(n):
     f.write(text)
     f.close()
 
-    
+    answer_Astar=A_star_algorithm(readBoard(dir_name + "/" + file_name),4)
+
+    if answer_Astar==[0,0,0] or answer_Astar[2]==4:
+        i-=1
+        continue
+
+    f=open(dir_name + "_answers" + "/" + file_name, 'w')
+    text=str(answer_Astar)
+    f.write(text)
+    f.close()
