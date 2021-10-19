@@ -183,7 +183,7 @@ def expand(G, board, chart):
                         G.nodes[node]['block']=1
                 print("Created node: ", labelNode )
 
-# A_start_algorithm returns a list where 
+# A_star_algorithm returns a list where 
 # the first position will indicate to the gui when it is necessary to finish 
 # the process since it will take too long, 1 to continue, 0 to finish
 # the second position will indicate the number of expanded nodes expanded

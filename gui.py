@@ -1,6 +1,6 @@
 import pygame, os, sys
 from board import generateRandomBoard, readBoard, updateBoard
-from ai import A_start_algorithm, randomWay
+from ai import A_star_algorithm, randomWay
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 
@@ -70,12 +70,12 @@ class gui:
                     if board[i][j]==4:
                         window.blit(link, (j*60,i*60))
             pygame.display.update()
-            Enemy1=A_start_algorithm(board,2)
+            Enemy1=A_star_algorithm(board,2)
             if Enemy1[0]==0:
                 break
             board=updateBoard(board,2,Enemy1[2])
             board=updateBoard(board,-2,randomWay(board,-2))
-            Link=A_start_algorithm(board,4)
+            Link=A_star_algorithm(board,4)
             if Link[0]==0:
                 break
             board=updateBoard(board,4,Link[2])

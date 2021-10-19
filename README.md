@@ -1,4 +1,4 @@
-# Zelda maze with A* search algorithm
+# Zelda maze with an implementation of A* search algorithm
 This project was made for the introductory course to artificial intelligence 2019 at the Universidad del Valle, Colombia. Personally I find it interesting since it uses the NetworkX library to solve the problem.
 
 Zelda maze is a simulation where the characters have an algorithm to play.
