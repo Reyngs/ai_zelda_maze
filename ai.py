@@ -188,7 +188,7 @@ def expand(G, board, chart):
 # the process since it will take too long, 1 to continue, 0 to finish
 # the second position will indicate the number of expanded nodes expanded
 # the third position will indicate the direction that the algorithm found to be the most optimal
-def A_start_algorithm(board, chart):
+def A_star_algorithm(board, chart):
     posChart=targetPosition(chart,board)
     if chart==4:
         if targetPosition(5,board)==[0,0]:
