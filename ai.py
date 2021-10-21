@@ -119,10 +119,10 @@ def expand(G, board, chart):
     while True:
         node = nodeToExpand(G) # We find the node to expand
         # If the graph exceeds 10000 expanded nodes, it returns -2
-        if G.nodes[node]['label']>=10000:
+        if G.nodes[node]['label']>=2000:
             return -2
         
-        print("Chart: ", chart, ", expanded node:", G.nodes[node]['label'])
+        #print("Chart: ", chart, ", expanded node:", G.nodes[node]['label'])
         
         # We create the variable pos with the position it represents
         pos=[0,0]
@@ -181,7 +181,7 @@ def expand(G, board, chart):
                 if G.nodes[node]['label']!=0:
                     if pos==G.nodes[G.nodes[labelNode]['father']]['pos']:
                         G.nodes[node]['block']=1
-                print("Created node: ", labelNode )
+                #print("Created node: ", labelNode )
 
 # A_star_algorithm returns a list where 
 # the first position will indicate to the gui when it is necessary to finish 

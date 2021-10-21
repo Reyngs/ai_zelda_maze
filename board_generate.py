@@ -1,6 +1,6 @@
 import os
 from board import generateRandomBoard, readBoard
-from ai import A_star_algorithm
+from ai import A_star_algorithm, targetPosition, canExpand, changePos, manhattanDistance
 
 dir_name=input("Ingresa el nombre de la carpeta donde se almacenaran los tableros: ")
 
@@ -35,13 +35,43 @@ while i+1 < n:
     f.write(text)
     f.close()
 
-    answer_Astar=A_star_algorithm(readBoard(dir_name + "/" + file_name),4)
-
+    
+    tP = targetPosition(4,board)
+    cE = canExpand(targetPosition(4,board),board,4)
+    mD = manhattanDistance(board,targetPosition(3,board),4)
+    cP = changePos(targetPosition(4,board),1)
+    #answer_Astar=A_star_algorithm(readBoard(dir_name + "/" + file_name),4)
+    answer_Astar=A_star_algorithm(board,4)
+    
     if answer_Astar==[0,0,0] or answer_Astar[2]==4:
         i-=1
         continue
 
     f=open(dir_name + "_answers" + "/" + file_name, 'w')
-    text=str(answer_Astar)
+    
+    text=str(answer_Astar[0])
+    text+=", "
+    text+=str(answer_Astar[1])
+    text+=", "
+    text+=str(answer_Astar[2])
+    text+=", "
+    text+=str(tP[0])
+    text+=", "
+    text+=str(tP[1])
+    text+=", "
+    text+=str(cE[0])
+    text+=", "
+    text+=str(cE[1])
+    text+=", "
+    text+=str(cE[2])
+    text+=", "
+    text+=str(cE[3])
+    text+=", "
+    text+=str(mD)
+    text+=", "
+    text+=str(cP[0])
+    text+=", "
+    text+=str(cP[1])
+    
     f.write(text)
     f.close()
